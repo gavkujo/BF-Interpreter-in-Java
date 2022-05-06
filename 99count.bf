@@ -1,4 +1,4 @@
-[counter; The idea is to make a program that can count up to 99 and display it, author: Camilo Zambrano]
+program that can count up to 99 and display it
 >++++ ++++                     adds 8 to cell no:1
 [
     <+++++ +++++ +++++ +++++   Every iteration it adds 20 to Cell No: 0
