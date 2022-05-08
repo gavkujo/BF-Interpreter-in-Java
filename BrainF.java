@@ -3,76 +3,40 @@ import java.util.*;
 class BrainF
 {
 	private static Scanner ob = new Scanner(System.in);
-	private static int ptr; // Data pointer
+	private static int ptr;
 	
-	// Max memory limit. It is the highest number which
-	// can be represented by an unsigned 16-bit binary
-	// number. Many computer programming environments
-	// beside brainfuck may have predefined
-	// constant values representing 65535.
 	private static int length = 65535;
 	
-	// Array of byte type simulating memory of max
-	// 65535 bits from 0 to 65534.
 	private static byte memory[] = new byte[length];
 	
-	// Interpreter function which accepts the code
-	// a string parameter
 	private static void interpret(String s)
 	{
 		int c = 0;
 		
-		// Parsing through each character of the code
 		for (int i = 0; i < s.length(); i++)
 		{
-			// BrainFuck is a tiny language with only
-			// eight instructions. In this loop we check
-			// and execute all those eight instructions
-			
-			
-			// > moves the pointer to the right
 			if (s.charAt(i) == '>')
 			{
-				if (ptr == length - 1)//If memory is full
-					ptr = 0;//pointer is returned to zero
+				if (ptr == length - 1)
+					ptr = 0;
 				else
 					ptr ++;
 			}
-			
-			// < moves the pointer to the left
 			else if (s.charAt(i) == '<')
 			{
-				if (ptr == 0) // If the pointer reaches zero
-
-					// pointer is returned to rightmost memory
-					// position
+				if (ptr == 0)
 					ptr = length - 1;
 				else
 					ptr --;
 			}
-			
-			// + increments the value of the memory
-			// cell under the pointer
 			else if (s.charAt(i) == '+')
 				memory[ptr] ++;
-
-			// - decrements the value of the memory cell
-			// under the pointer
 			else if (s.charAt(i) == '-')
 				memory[ptr] --;
-
-			// . outputs the character signified by the
-			// cell at the pointer
 			else if (s.charAt(i) == '.')
 				System.out.print((char)(memory[ptr]));
-
-			// , inputs a character and store it in the
-			// cell at the pointer
 			else if (s.charAt(i) == ',')
 				memory[ptr] = (byte)(ob.next().charAt(0));
-
-			// [ jumps past the matching ] if the cell
-			// under the pointer is 0
 			else if (s.charAt(i) == '[')
 			{
 				if (memory[ptr] == 0)
@@ -88,9 +52,6 @@ class BrainF
 					}
 				}
 			}
-
-			// ] jumps back to the matching [ if the
-			// cell under the pointer is nonzero
 			else if (s.charAt(i) == ']')
 			{
 				if (memory[ptr] != 0)
@@ -109,8 +70,6 @@ class BrainF
 			}
 		}
 	}
-
-	// Driver code
 	public static void main(String args[])
 	{
 		System.out.println("Enter the code:");
